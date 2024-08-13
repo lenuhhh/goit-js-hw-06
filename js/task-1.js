@@ -1,38 +1,30 @@
-let customer = {
-  discount: 0,
-  balance: 0,
-  orders: [],
-
-  getDiscount() {
-      return this.discount;
-  },
-
-  setDiscount(newDiscount) {
-      this.discount = newDiscount;
-  },
+const customer = {
+  username: "Mango",
+  balance: 24000,
+  discount: 0.1,
+  orders: ["Burger", "Pizza", "Salad"],
 
   getBalance() {
-      return this.balance;
+    return this.balance;
   },
-
+  getDiscount() {
+    return this.discount;
+  },
+  setDiscount(value) {
+    this.discount = value;
+  },
   getOrders() {
-      return this.orders;
+    return this.orders;
+  },
+  addOrder(cost, order) {
+    this.balance -= cost - cost * this.discount;
+    this.orders.push(order);
   },
 
-  addOrder(amount, product) {
-      this.orders.push({ amount, product });
-      this.balance += amount;
-  }
 };
-
-
-console.log(customer.getDiscount()); 
 
 customer.setDiscount(0.15);
 console.log(customer.getDiscount()); 
-
-console.log(customer.getBalance());
-
 customer.addOrder(5000, "Steak");
 console.log(customer.getBalance()); 
-console.log(customer.getOrders());  
+console.log(customer.getOrders()); 
